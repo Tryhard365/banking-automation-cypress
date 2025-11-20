@@ -1,0 +1,233 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 4,
+    "pending": 0,
+    "failures": 3,
+    "start": "2025-11-20T12:38:14.101Z",
+    "end": "2025-11-20T12:38:54.819Z",
+    "duration": 40718,
+    "testsRegistered": 7,
+    "passPercent": 57.14285714285714,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e39985b8-0bf5-476b-9926-fd2f76fbaec1",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ui\\banking.cy.js",
+      "file": "cypress\\e2e\\ui\\banking.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "93fc9fed-cb26-432e-89cd-9767f300cf59",
+          "title": "ParaBank - Banking Application Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User can login successfully",
+              "fullTitle": "ParaBank - Banking Application Tests User can login successfully",
+              "timedOut": null,
+              "duration": 7304,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login(testUser.username, testUser.password);\n_AccountsPage.default.verifyAccountsVisible();\n_AccountsPage.default.elements.welcomeMessage().should('contain', 'Welcome');",
+              "err": {},
+              "uuid": "919fd04a-38a5-43ad-b3e5-b3a1dfafadf1",
+              "parentUUID": "93fc9fed-cb26-432e-89cd-9767f300cf59",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User cannot login with invalid credentials",
+              "fullTitle": "ParaBank - Banking Application Tests User cannot login with invalid credentials",
+              "timedOut": null,
+              "duration": 7913,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login('invaliduser', 'wrongpassword');\n_LoginPage.default.elements.errorMessage().should('be.visible');\n_LoginPage.default.elements.errorMessage().should('contain', 'error');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<p.error>' to contain 'error'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<p.error>' to contain 'error'\n    at Context.eval (webpack://banking-automation-cypress/./cypress/e2e/ui/banking.cy.js:25:38)",
+                "diff": null
+              },
+              "uuid": "ea79369d-f7dc-41ef-a54d-9fa17d615362",
+              "parentUUID": "93fc9fed-cb26-432e-89cd-9767f300cf59",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Displays account overview with balance",
+              "fullTitle": "ParaBank - Banking Application Tests Displays account overview with balance",
+              "timedOut": null,
+              "duration": 7627,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login(testUser.username, testUser.password);\n_AccountsPage.default.verifyAccountsVisible();\n_AccountsPage.default.getFirstAccountBalance().should('be.visible');\n_AccountsPage.default.getFirstAccountBalance().invoke('text').should('match', /\\$[\\d,]+\\.\\d{2}/);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#accountTable .balance`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#accountTable .balance`, but never found it.\n    at Object.balance (webpack://banking-automation-cypress/./cypress/pages/AccountsPage.js:5:22)\n    at AccountsPage.getFirstAccountBalance (webpack://banking-automation-cypress/./cypress/pages/AccountsPage.js:15:25)\n    at Context.eval (webpack://banking-automation-cypress/./cypress/e2e/ui/banking.cy.js:31:17)",
+                "diff": null
+              },
+              "uuid": "b9178394-3736-471c-a7ed-e412e45dcff5",
+              "parentUUID": "93fc9fed-cb26-432e-89cd-9767f300cf59",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User can view account details",
+              "fullTitle": "ParaBank - Banking Application Tests User can view account details",
+              "timedOut": null,
+              "duration": 3308,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login(testUser.username, testUser.password);\n_AccountsPage.default.verifyAccountsVisible();\n_AccountsPage.default.clickFirstAccount();\ncy.url().should('include', 'activity.htm');\ncy.get('#accountId').should('be.visible');",
+              "err": {},
+              "uuid": "7c09981f-052a-41f6-9de6-27f75c9833ad",
+              "parentUUID": "93fc9fed-cb26-432e-89cd-9767f300cf59",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User can transfer funds between accounts",
+              "fullTitle": "ParaBank - Banking Application Tests User can transfer funds between accounts",
+              "timedOut": null,
+              "duration": 7514,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login(testUser.username, testUser.password);\n_TransferPage.default.visit();\n_TransferPage.default.transferFunds('100', '0', '1');\n_TransferPage.default.verifyTransferSuccess();",
+              "err": {
+                "message": "CypressError: Timed out retrying after 4000ms: `cy.select()` failed because it could not find a single `<option>` with value, index, or text matching: `0`\n\nhttps://on.cypress.io/select",
+                "estack": "CypressError: Timed out retrying after 4000ms: `cy.select()` failed because it could not find a single `<option>` with value, index, or text matching: `0`\n\nhttps://on.cypress.io/select\n    at getOptions (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:116068:72)\n    at tryCatcher (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:4285:29)\n    at retryOptions (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:116100:70)\n    at tryCatcher (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:151483:68)\n    at <unknown> (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:151424:14)\n    at tryCatcher (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://parabank.parasoft.com/__cypress/runner/cypress_runner.js:5420:46)\nFrom Your Spec Code:\n    at TransferPage.transferFunds (webpack://banking-automation-cypress/./cypress/pages/TransferPage.js:18:40)\n    at Context.eval (webpack://banking-automation-cypress/./cypress/e2e/ui/banking.cy.js:46:17)",
+                "diff": null
+              },
+              "uuid": "6b12614a-c645-46c6-829e-b3fe612c5062",
+              "parentUUID": "93fc9fed-cb26-432e-89cd-9767f300cf59",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cannot transfer with empty amount",
+              "fullTitle": "ParaBank - Banking Application Tests Cannot transfer with empty amount",
+              "timedOut": null,
+              "duration": 3481,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login(testUser.username, testUser.password);\n_TransferPage.default.visit();\n_TransferPage.default.elements.transferButton().click();\ncy.get('.error').should('be.visible');",
+              "err": {},
+              "uuid": "da770185-9b95-4222-abf6-53495fd00afb",
+              "parentUUID": "93fc9fed-cb26-432e-89cd-9767f300cf59",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User can logout successfully",
+              "fullTitle": "ParaBank - Banking Application Tests User can logout successfully",
+              "timedOut": null,
+              "duration": 3330,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login(testUser.username, testUser.password);\n_AccountsPage.default.logout();\n_LoginPage.default.elements.loginButton().should('be.visible');",
+              "err": {},
+              "uuid": "6a532e5d-77d9-43a3-8162-f7e5d099fdb8",
+              "parentUUID": "93fc9fed-cb26-432e-89cd-9767f300cf59",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "919fd04a-38a5-43ad-b3e5-b3a1dfafadf1",
+            "7c09981f-052a-41f6-9de6-27f75c9833ad",
+            "da770185-9b95-4222-abf6-53495fd00afb",
+            "6a532e5d-77d9-43a3-8162-f7e5d099fdb8"
+          ],
+          "failures": [
+            "ea79369d-f7dc-41ef-a54d-9fa17d615362",
+            "b9178394-3736-471c-a7ed-e412e45dcff5",
+            "6b12614a-c645-46c6-829e-b3fe612c5062"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 40477,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
