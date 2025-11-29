@@ -108,13 +108,8 @@ Open `cypress/reports/mochawesome.html` in your browser after test execution.
 - Form error handling
 
 ## 👨‍💻 Author
-**[Your Name]** - QA Automation Engineer  
+**Micheal Adedoyin** - QA Automation Engineer  
 Specializing in E2E automation for fintech and banking applications.
-
-## 📫 Contact
-- GitHub: [Your GitHub Profile]
-- LinkedIn: [Your LinkedIn]
-- Email: [Your Email]
 
 ---
 
